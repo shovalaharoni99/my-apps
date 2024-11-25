@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   annotations:
-    reloader.stakater.com/match: "true"
+    reloader.stakater.com/match: "nginx-secret"
   name: nginx
   labels:
     app: nginx
