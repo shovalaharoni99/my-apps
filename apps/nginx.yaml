@@ -6,9 +6,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/your-repo'
+    repoURL: 'https://github.com/shovalaharoni99/my-apps.git'
     targetRevision: HEAD
-    path: .././nginx-app/
+    path: ../nginx-app/
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: default
