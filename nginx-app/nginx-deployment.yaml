@@ -1,6 +1,8 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  annotations:
+    reloader.stakater.com/match: "nginx-config"
   name: nginx
   labels:
     app: nginx
