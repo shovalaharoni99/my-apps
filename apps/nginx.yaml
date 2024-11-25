@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: 'https://github.com/your-repo'
     targetRevision: HEAD
-    path: ../nginx-app
+    path: .././nginx-app/
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: default
