@@ -7,7 +7,7 @@ spec:
   project: default
   source:
     repoURL: 'https://github.com/shovalaharoni99/my-apps.git'
-    targetRevision: main
+    targetRevision: HEAD
     chart: https://prometheus-community.github.io/helm-charts/kube-prometheus-stack
     helm:
       valueFiles:
