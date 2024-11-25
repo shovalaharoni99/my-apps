@@ -8,10 +8,10 @@ spec:
   source:
     repoURL: 'https://github.com/shovalaharoni99/my-apps.git'
     targetRevision: HEAD
-    path: ./nginx-app/
+    path: ./monitoring/
   destination:
     server: 'https://kubernetes.default.svc'
-    namespace: nginx
+    namespace: monitoring
   syncPolicy:
     automated:
       prune: true
