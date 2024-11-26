@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: prometheus-alertmanager
+  name: prometheus-and-alertmanager
   namespace: argocd
 spec:
   project: default
