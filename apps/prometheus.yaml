@@ -36,6 +36,8 @@ spec:
                 target_match:
                   severity: 'warning'
                 equal: ['alertname', 'cluster', 'service']
+        prometheusOperator:
+          enabled: false
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
