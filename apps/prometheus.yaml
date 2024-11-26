@@ -16,7 +16,12 @@ spec:
             serviceMonitorSelector: {}
             podMonitorSelector: {}
         alertmanager:
-          enabled: false
+          enabled: true
+      plugin:
+        name: argocd-helm
+        parameters:
+        - name: "crds"
+          value: "true"
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
