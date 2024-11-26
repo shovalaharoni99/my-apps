@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: 'https://github.com/shovalaharoni99/my-apps.git'
     targetRevision: HEAD
-    path: ./prometheus-crds
+    path: prometheus-crds/
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
