@@ -15,7 +15,8 @@ spec:
           prometheusSpec:
             serviceMonitorSelector: {}
             podMonitorSelector: {}
-
+        alertmanager:
+          enabled: false
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
