@@ -29,3 +29,40 @@ spec:
     ignoreDifferences:
     - group: apiextensions.k8s.io
       kind: CustomResourceDefinition
+  hooks:
+  - type: PreSync
+    resource:
+      apiVersion: batch/v1
+      kind: Job
+      metadata:
+        name: crd-installer
+      spec:
+        template:
+          spec:
+            containers:
+            - name: crd-installer
+              image: bitnami/kubectl:latest
+              command:
+              - /bin/bash
+              - -c
+              - |
+                # List of CRD URLs
+                CRDS=(
+                  "https://raw.githubusercontent.com/prometheus-community/helm-charts/main/charts/kube-prometheus-stack/charts/crds/crds/crd-alertmanagerconfigs.yaml"
+                  "https://raw.githubusercontent.com/prometheus-community/helm-charts/main/charts/kube-prometheus-stack/charts/crds/crds/crd-alertmanagers.yaml"
+                  "https://raw.githubusercontent.com/prometheus-community/helm-charts/main/charts/kube-prometheus-stack/charts/crds/crds/crd-podmonitors.yaml"
+                  "https://raw.githubusercontent.com/prometheus-community/helm-charts/main/charts/kube-prometheus-stack/charts/crds/crds/crd-prometheuses.yaml"
+                  "https://raw.githubusercontent.com/prometheus-community/helm-charts/main/charts/kube-prometheus-stack/charts/crds/crds/crd-prometheusrules.yaml"
+                  "https://raw.githubusercontent.com/prometheus-community/helm-charts/main/charts/kube-prometheus-stack/charts/crds/crds/crd-servicemonitors.yaml"
+                  "https://raw.githubusercontent.com/prometheus-community/helm-charts/main/charts/kube-prometheus-stack/charts/crds/crds/crd-thanosrulers.yaml"
+                )
+
+                # Apply each CRD using server-side apply
+                for crd in "${CRDS[@]}"; do
+                  echo "Applying CRD: $crd"
+                  kubectl apply --server-side -f "$crd"
+                done
+
+                echo "All CRDs applied successfully."
+
+            restartPolicy: OnFailure
