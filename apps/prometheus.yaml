@@ -20,9 +20,10 @@ spec:
     - CreateNamespace=true # Optional: Create namespace if
     ignoreDifferences:
       - group: apps
-          kind: StatefulSet
-          name: prometheus-alertmanager
-          jsonPointers:
-            - /spec/volumeClaimTemplates # Ignore immutable fields in StatefulSet
-        - group: apiextensions.k8s.io
-          kind: CustomResourceDefinition
+        kind: StatefulSet
+        name: prometheus-alertmanager
+        jsonPointers:
+          - /spec/volumeClaimTemplates # Ignore immutable fields in StatefulSet
+          - /spec/serviceName
+      - group: apiextensions.k8s.io
+        kind: CustomResourceDefinition
