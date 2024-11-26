@@ -6,13 +6,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/prometheus-community/helm-charts
-    targetRevision: 66.2.2
-    path: kube-prometheus-stack
-    helm:
-      parameters:
-      - name: installCRDs
-        value: "true"
+    repoURL: 'https://github.com/shovalaharoni99/my-apps.git'
+    targetRevision: HEAD
+    path: ./prometheus-crds
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
