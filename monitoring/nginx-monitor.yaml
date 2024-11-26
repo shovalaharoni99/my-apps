@@ -6,7 +6,7 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: nginx
+      app: nginx-exporter
   endpoints:
-  - port: metrics
+  - port: 9113
     interval: 15s
