@@ -17,11 +17,6 @@ spec:
             podMonitorSelector: {}
         alertmanager:
           enabled: true
-      plugin:
-        name: argocd-helm
-        parameters:
-        - name: "crds"
-          value: "true"
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
@@ -32,5 +27,5 @@ spec:
     syncOptions:
     - CreateNamespace=true # Optional: Create namespace if
     ignoreDifferences:
-      - group: apiextensions.k8s.io
-        kind: CustomResourceDefinition
+    - group: apiextensions.k8s.io
+      kind: CustomResourceDefinition
