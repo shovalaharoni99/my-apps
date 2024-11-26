@@ -19,6 +19,19 @@ spec:
               - job_name: 'nginx'
                 static_configs:
                   - targets: ['nginx-exporter.monitoring.svc.cluster.local:9113']
+        rules:
+          nginx-alert-rules.yaml:
+            groups:
+              - name: nginx-alerts
+                rules:
+                  - alert: HighCpuUsage
+                    expr: sum(rate(container_cpu_usage_seconds_total{job="nginx"}[5m])) > 0.9
+                    for: 1m
+                    labels:
+                      severity: critical
+                    annotations:
+                      summary: "High CPU usage on Nginx"
+                      description: "The Nginx pod is using more than 90% CPU for over 1 minute."
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
